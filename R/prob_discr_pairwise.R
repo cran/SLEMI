@@ -42,21 +42,16 @@
 #' @return a list with two elements:
 #' \itemize{
 #' \item output$prob_matr - a \eqn{n\times n} matrix, where \eqn{n} is the number of inputs, with probabilities of correct 
-#' discirimination between pairs of input values. 
-#' \item output$diagnostics     - (if diagnostics=TRUE) a list correspondning to logistic regression models fitted for each 
+#' discrimination between pairs of input values. 
+#' \item output$diagnostics     - (if diagnostics=TRUE) a list corresponding to logistic regression models fitted for each 
 #' pair of input values. Each element consists of three sub-elements: 1) nnet_model - nnet object summarising logistic regression model; 
 #' 2) prob_lr - probabilities of assignment obtained from logistic regression model; 
 #' 3) confusion_matrix - confusion matrix of classificator.
 #' }
 #' @examples 
-#' ## Calculate probabilities of discrimination for toy dataset
-#' temp_data=data_example1
-#' output=prob_discr_pairwise(dataRaw=data_example1,
-#'                    signal = "signal",
-#'                    response = "response")
 #' ## Calculate probabilities of discrimination for nfkb dataset
 #'  it=21 # choose from 0, 3, 6, ..., 120 for measurements at other time points
-#'  output=prob_discr_pairwise(dataRaw=data_nfkb,
+#'  output=prob_discr_pairwise(dataRaw=data_nfkb[data_nfkb$signal%in%c("0ng","1ng","100ng"),],
 #'                             signal = "signal",
 #'                            response = paste0("response_",it))
 #'

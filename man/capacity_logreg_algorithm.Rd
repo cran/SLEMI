@@ -4,10 +4,17 @@
 \alias{capacity_logreg_algorithm}
 \title{Main algorithm to calculate channel capacity by SLEMI approach}
 \usage{
-capacity_logreg_algorithm(data, signal = "signal",
-  response = "response", side_variables = NULL,
-  formula_string = NULL, model_out = TRUE, cc_maxit = 100,
-  lr_maxit = 1000, MaxNWts = 5000)
+capacity_logreg_algorithm(
+  data,
+  signal = "signal",
+  response = "response",
+  side_variables = NULL,
+  formula_string = NULL,
+  model_out = TRUE,
+  cc_maxit = 100,
+  lr_maxit = 1000,
+  MaxNWts = 5000
+)
 }
 \arguments{
 \item{data}{must be a data.frame object. Cannot contain NA values.}
@@ -21,9 +28,9 @@ capacity_logreg_algorithm(data, signal = "signal",
 \item{formula_string}{(optional) is a character object that includes a formula syntax to use in logistic regression model. 
 If NULL, a standard additive model of response variables is assumed. Only for advanced users.}
 
-\item{model_out}{is the logical indicating if the calculated logisitc regression model should be included in output list}
+\item{model_out}{is the logical indicating if the calculated logistic regression model should be included in output list}
 
-\item{cc_maxit}{is the number of iteration of iterative optimisation of the algorithm to esimate channel capacity. Default is 100.}
+\item{cc_maxit}{is the number of iteration of iterative optimisation of the algorithm to estimate channel capacity. Default is 100.}
 
 \item{lr_maxit}{is a maximum number of iteration of fitting algorithm of logistic regression. Default is 1000.}
 
@@ -51,8 +58,9 @@ Information-theoretic analysis of multivariate single-cell signaling responses u
 }
 
 \examples{
-tempdata=data_example1
-outputCLR1=capacity_logreg_algorithm(data=tempdata, signal="signal", response="response",
+tempdata=data_example1 
+outputCLR1=capacity_logreg_algorithm(data=tempdata, signal="signal",
+response="response",cc_maxit=3,model_out=FALSE,
 formula_string = "signal~response")
 
 }

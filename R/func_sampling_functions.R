@@ -1,10 +1,10 @@
 #' Sampling procedures used for testing capacity algorithm
 #' 
-#' Internal, auxillary functions
+#' Internal, auxiliary functions
 #'
 #' These function allow to re-sample, bootstrap and divide initial dataset
 #' @param data is a data.frame to be resampled
-#' @param dataDiv a character indicating column of data, with respect to which, data should be splitte before bootstrap
+#' @param dataDiv a character indicating column of data, with respect to which, data should be split before bootstrap
 #' @param prob is numeric for the portion of data that should be sampled from the whole dataset (only in sampling_bootstrap)
 #' @param side_variables is a vector of characters indicating columns of data the will be reshuffled (only in sampling_shuffle)
 #' @param partition_trainfrac is a numeric for the portion of data that will be used as a training and testing datasets
@@ -12,7 +12,7 @@
 #' @return Function sampling_bootstrap returns a data.frame with the same structure as initial data object, but with prob proportion
 #' of observations for each dataDiv level. Function sampling_shuffle returns a data.frame with the same structure as initial data object with 
 #' shuffled values of columns given in side_variables argument. Function sampling_partition returns a list of two data.frame objects - 
-#' train and test that has the same structure as initial data argument with partition_trainfrac and 1-partition_trainfrac observations, resepctively.
+#' train and test that has the same structure as initial data argument with partition_trainfrac and 1-partition_trainfrac observations, respectively.
 
 #' @keywords internal
 #' @examples 
@@ -27,6 +27,18 @@ sampling_bootstrap<-function(data,prob=1,dataDiv){
   #   signal="signal"
   #   colnames(data)[colnames(data)==var]="signal"
   
+  if (prob>1|prob<=0){
+    stop("wrong probability for bootstrap")
+  }
+
+  if (!nrow(data)==length(dataDiv)){
+    stop("incorrect dataDiv length")
+  }
+
+  if (floor(prob*nrow(data))<2){
+    stop("number of re-sampled samples are too low. Increase prob parameter.")
+  }
+
   dataBoot=do.call(rbind,by(data,list(dataDiv),function(x){ 
     sample_num=nrow(x)
     sample_out=sample(1:sample_num,floor(prob*sample_num),replace=FALSE)

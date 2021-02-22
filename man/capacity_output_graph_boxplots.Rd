@@ -5,16 +5,34 @@
 \alias{capacity_output_graph_violinMean}
 \alias{capacity_output_graph_boxplotsSideVar}
 \alias{capacity_output_graph_capacity}
-\title{Plotting output of capacity estimation. Auxillary functions.}
+\title{Plotting output of capacity estimation. Auxiliary functions.}
 \usage{
-capacity_output_graph_boxplots(data, signal, response, path, height = 4,
-  width = 6)
+capacity_output_graph_boxplots(
+  data,
+  signal,
+  response,
+  path,
+  height = 4,
+  width = 6
+)
 
-capacity_output_graph_violinMean(data, signal, response, path,
-  height = 4, width = 6)
+capacity_output_graph_violinMean(
+  data,
+  signal,
+  response,
+  path,
+  height = 4,
+  width = 6
+)
 
-capacity_output_graph_boxplotsSideVar(data, signal, side_variables, path,
-  height = 4, width = 6)
+capacity_output_graph_boxplotsSideVar(
+  data,
+  signal,
+  side_variables,
+  path,
+  height = 4,
+  width = 6
+)
 
 capacity_output_graph_capacity(cc_output, path, height = 4, width = 6)
 }
