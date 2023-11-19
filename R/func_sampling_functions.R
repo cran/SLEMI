@@ -55,7 +55,7 @@ sampling_bootstrap<-function(data,prob=1,dataDiv){
   #   }
   #   datanew
   colnames(dataBoot)<-colnames(data)
-  if (class(data)=="matrix") {dataBoot=as.matrix(dataBoot)}
+  if (methods::is(data,"matrix")) {dataBoot=as.matrix(dataBoot)}
   
   dataBoot
 }
@@ -90,7 +90,7 @@ sampling_shuffle<-function(data,side_variables){
     
     colnames(dataNewAdd)=side_variables
     dataNew=cbind(dataBasic,dataNewAdd)
-    if (class(data)=="matrix") {dataNew=as.matrix(dataNew)}
+    if (methods::is(data,"matrix")) {dataNew=as.matrix(dataNew)}
     
   } else {
     warning('there is no side variables defined. No resampling made.')
@@ -121,7 +121,7 @@ sampling_partition<-function(data,dataDiv,partition_trainfrac){
   dataNew$test=do.call(rbind,lapply(group_partition,function(x) x$datatest ))
   dataNew$train=do.call(rbind,lapply(group_partition,function(x) x$datatrain ))
   
-  if (class(data)=="matrix") {
+  if (methods::is(data,"matrix")) {
     dataNew$test=as.matrix(dataNew$test)
     dataNew$train=as.matrix(dataNew$train)}
   

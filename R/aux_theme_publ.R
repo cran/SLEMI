@@ -13,8 +13,8 @@
 #' geom_point()+SLEMI:::aux_theme_publ(version=2)
 aux_theme_publ<-function (base_size = 12, base_family = "sans",version=1) { 
   if (version==2) {
-    bgcolor = "default"
-    bgcol <- ggthemes::ggthemes_data$hc$bg[bgcolor]
+    #bgcolor = "default"
+    bgcol <- "white"
     ret <- ggplot2::theme(rect = ggplot2::element_rect(fill = bgcol, linetype = 0,colour = NA), 
                  text = ggplot2::element_text(size = base_size, family = base_family), 
                  title = ggplot2::element_text(size=20,hjust = 0.5,face="bold"), 

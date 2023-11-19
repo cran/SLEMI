@@ -1,3 +1,8 @@
+# SLEMI 1.0.2
+
+* Removed dependency with `ggthemes`
+* Adjusted new `roxygen` policy regarding package help page 
+
 # SLEMI 1.0.1
 
 * Added a `NEWS.md` file to track changes to the package.
